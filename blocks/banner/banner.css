@@ -66,3 +66,15 @@
       font-size: 1.75rem;
     }
   }
+
+  .banner.dark {
+    --banner-bg-color: #1a1a1a;
+  }
+   
+  .banner.dark .banner-image img {
+    opacity: 0.4;
+  }
+   
+  .banner.dark .banner-text h2 {
+    text-shadow: 0 1px 4px rgb(0 0 0 / 70%);
+  }

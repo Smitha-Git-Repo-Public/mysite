@@ -42,10 +42,14 @@ export default function decorate(block) {
     const bgColor = colorRow?.textContent?.trim();
     colorRow?.remove();
   
-    // Only override the CSS custom property if the author actually set a
-    // color. Otherwise the CSS default (blue) takes over — no JS fallback
-    // logic needed, and authors can just delete the row to reset it.
+    // Check if the author specified "banner (dark)" to trigger the dark variant.
+    // Otherwise, treat it as a custom background color.
     if (bgColor) {
-      block.style.setProperty('--banner-bg-color', bgColor);
+      const lowerBgColor = bgColor.toLowerCase();
+      if (lowerBgColor.includes('banner') && lowerBgColor.includes('dark')) {
+        block.classList.add('dark');
+      } else {
+        block.style.setProperty('--banner-bg-color', bgColor);
+      }
     }
-  }
+}

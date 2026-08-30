@@ -1,0 +1,67 @@
+.note {
+  --note-color: #04599c;
+  --note-background: #e7f2fb;
+
+  display: flex;
+  gap: 16px;
+  padding: 20px 24px;
+  border-radius: 8px;
+  background-color: var(--note-background);
+  color: var(--note-color);
+  font-size: var(--body-font-size-s);
+}
+
+.note .note-icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  margin-top: 2px;
+}
+
+.note .note-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.note .note-body > * {
+  margin: 0;
+}
+
+.note .note-body > * + * {
+  margin-top: 8px;
+}
+
+.note .note-heading {
+  font-weight: 700;
+}
+
+.note .note-body a {
+  color: inherit;
+}
+
+/* Variants */
+.note.warning {
+  --note-color: #8a5300;
+  --note-background: #fdf3e2;
+}
+
+.note.error {
+  --note-color: #a3130e;
+  --note-background: #fbeaea;
+}
+
+.note.success {
+  --note-color: #1c6b2c;
+  --note-background: #e9f6ec;
+}
+
+/* Accent border variant */
+.note.accent-border {
+  border-left: 6px solid var(--note-color);
+}
+
+/* No-icon variant */
+.note.no-icon .note-icon {
+  display: none;
+}

@@ -1,0 +1,9 @@
+{
+  "sites": {
+    "mysite": {
+      "previewOrg": "smitha-git-repo-public",
+      "previewSite": "mysite",
+      "contentHostUrl": "https://content.da.live/smitha-git-repo-public/mysite/"
+    }
+  }
+}

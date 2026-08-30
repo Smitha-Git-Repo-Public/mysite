@@ -1,0 +1,67 @@
+.employee-list table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--body-font-size-s);
+}
+
+.employee-list thead th {
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--dark-color, #505050);
+  text-align: left;
+  font-weight: 700;
+}
+
+.employee-list tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--light-color, #e0e0e0);
+  vertical-align: top;
+}
+
+.employee-list tbody tr:nth-child(even) {
+  background-color: var(--light-color, #f5f5f5);
+}
+
+.employee-list-load-more {
+  display: block;
+  margin: 24px auto 0;
+}
+
+.employee-list-empty {
+  margin: 0;
+  font-style: italic;
+}
+
+/* Stack each row into a labelled card on small screens. */
+@media (width < 600px) {
+  .employee-list thead {
+    display: none;
+  }
+
+  .employee-list tbody tr {
+    display: block;
+    margin-bottom: 16px;
+    border: 1px solid var(--light-color, #e0e0e0);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .employee-list tbody tr:nth-child(even) {
+    background-color: transparent;
+  }
+
+  .employee-list tbody td {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    border-bottom: 1px solid var(--light-color, #e0e0e0);
+  }
+
+  .employee-list tbody td:last-child {
+    border-bottom: 0;
+  }
+
+  .employee-list tbody td::before {
+    content: attr(data-column);
+    font-weight: 700;
+  }
+}

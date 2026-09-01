@@ -41,14 +41,48 @@
       min-height: calc(100vh - var(--nav-height));
       display: flex;
       align-items: center;
+      justify-content: center;
+    }
+
+    main.error .section {
+      text-align: center;
+      max-width: 600px;
     }
 
     main.error .error-number {
       width: 100%;
+      max-width: 400px;
+      margin: 0 auto 20px;
     }
 
     main.error .error-number text {
-      font-family: monospace;
+      font-family: var(--heading-font-family);
+      font-weight: 700;
+      fill: var(--link-color);
+      font-size: 16px;
+    }
+
+    main.error .error-message {
+      font-size: var(--heading-font-size-xl);
+      margin: 20px 0;
+    }
+
+    main.error .error-description {
+      color: var(--dark-color);
+      margin-bottom: 30px;
+    }
+
+    main.error .button-container {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    @media (width < 600px) {
+      main.error .error-number {
+        max-width: 300px;
+      }
     }
   </style>
   <link rel="stylesheet" href="/styles/lazy-styles.css">
@@ -61,10 +95,13 @@
       <svg viewBox="1 0 38 18" class="error-number">
         <text x="0" y="17">404</text>
       </svg>
-      <h2 class="error-message">Page Not Found</h2>
-      <p class="button-container">
-        <a href="/" class="button secondary error-button-home">Go home</a>
+      <h1 class="error-message">Page Not Found</h1>
+      <p class="error-description">
+        The page you're looking for doesn't exist or has been moved.
       </p>
+      <div class="button-container">
+        <a href="/" class="button secondary error-button-home">Go home</a>
+      </div>
     </div>
   </main>
   <footer></footer>

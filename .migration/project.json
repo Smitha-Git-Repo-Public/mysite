@@ -1,9 +1,14 @@
 {
+  "type": "da",
   "sites": {
     "mysite": {
       "previewOrg": "smitha-git-repo-public",
       "previewSite": "mysite",
-      "contentHostUrl": "https://content.da.live/smitha-git-repo-public/mysite/"
+      "contentHostUrl": "https://content.da.live/smitha-git-repo-public/mysite/",
+      "libraryUrl": "https://main--sta-boilerplate--aemdemos.aem.page/tools/sidekick/library.json"
     }
-  }
+  },
+  "features": [
+    "site-planning"
+  ]
 }

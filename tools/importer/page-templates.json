@@ -1,0 +1,260 @@
+{
+  "metadata": {
+    "projectType": "da"
+  },
+  "templates": [
+    {
+      "name": "content-landing",
+      "urls": [
+        "https://wknd-trendsetters.site/",
+        "https://wknd-trendsetters.site/fashion-trends-of-the-season",
+        "https://wknd-trendsetters.site/fashion-trends-young-adults"
+      ],
+      "coverageGaps": [],
+      "description": "Homepage / content landing: intro columns, article header, photo gallery, testimonial tabs, latest-articles cards, FAQ accordion, closing overlay hero.",
+      "blocks": [
+        {
+          "name": "section-0",
+          "instances": [
+            "#main-content > header.section.secondary-section"
+          ],
+          "section": "secondary"
+        },
+        {
+          "name": "section-2",
+          "instances": [
+            "#main-content > section.section.secondary-section:nth-of-type(2)"
+          ],
+          "section": "secondary"
+        },
+        {
+          "name": "section-4",
+          "instances": [
+            "#main-content > section.section.secondary-section:nth-of-type(4)"
+          ],
+          "section": "secondary"
+        },
+        {
+          "name": "columns-media",
+          "instances": [
+            "#main-content > header.section.secondary-section > div.container > div.grid-layout.tablet-1-column.grid-gap-xxl"
+          ]
+        },
+        {
+          "name": "columns-media",
+          "instances": [
+            "#main-content > section.section:nth-of-type(1) > div.container > div.grid-layout.tablet-1-column.grid-gap-lg"
+          ]
+        },
+        {
+          "name": "cards-gallery",
+          "instances": [
+            "#main-content > section.section.secondary-section:nth-of-type(2) > div.container > div.grid-layout.desktop-4-column.tablet-2-column-1.mobile-portrait-1-column.grid-gap-sm"
+          ]
+        },
+        {
+          "name": "tabs-profiles",
+          "instances": [
+            "#main-content > section.section:nth-of-type(3) > div.container > div.tabs-wrapper"
+          ]
+        },
+        {
+          "name": "cards-article",
+          "instances": [
+            "#main-content > section.section.secondary-section:nth-of-type(4) > div.container > div.grid-layout.desktop-4-column.tablet-2-column-1.mobile-portrait-1-column.grid-gap-md"
+          ]
+        },
+        {
+          "name": "accordion-faq",
+          "instances": [
+            "#main-content > section.section:nth-of-type(5) div.faq-list"
+          ]
+        },
+        {
+          "name": "hero-overlay",
+          "instances": [
+            "#main-content > section.section.inverse-section > div.container > div.grid-layout.desktop-1-column"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "content-listing",
+      "urls": [
+        "https://wknd-trendsetters.site/blog",
+        "https://wknd-trendsetters.site/case-studies",
+        "https://wknd-trendsetters.site/fashion-insights"
+      ],
+      "coverageGaps": [],
+      "description": "Blog index/listing: hero intro columns, featured article columns, latest-articles card grid, closing accent CTA (default content).",
+      "blocks": [
+        {
+          "name": "section-0",
+          "instances": [
+            "#main-content > header.secondary-section"
+          ],
+          "section": "secondary"
+        },
+        {
+          "name": "section-2",
+          "instances": [
+            "#main-content > section.secondary-section#articles"
+          ],
+          "section": "secondary"
+        },
+        {
+          "name": "section-3",
+          "instances": [
+            "#main-content > section.accent-section"
+          ],
+          "section": "accent"
+        },
+        {
+          "name": "columns-media",
+          "instances": [
+            "#main-content > header.secondary-section > div.container > div.grid-layout.tablet-1-column.grid-gap-xxl"
+          ]
+        },
+        {
+          "name": "columns-media",
+          "instances": [
+            "#main-content > section.section:not(.secondary-section):not(.accent-section) > div.container > div.grid-layout.tablet-1-column.grid-gap-lg"
+          ]
+        },
+        {
+          "name": "cards-article",
+          "instances": [
+            "#main-content > section.secondary-section#articles > div.container > div.grid-layout.desktop-4-column.tablet-2-column-1.mobile-portrait-1-column.grid-gap-md"
+          ]
+        },
+        {
+          "name": "cards-gallery",
+          "instances": [
+            "#main-content > section.section:has(> div.container > div.grid-layout.desktop-3-column) > div.container > div.grid-layout.desktop-3-column"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "blog-article",
+      "urls": [
+        "https://wknd-trendsetters.site/blog/ace-pro-court-polo",
+        "https://wknd-trendsetters.site/blog/fashion-blog-post",
+        "https://wknd-trendsetters.site/blog/fashion-trends-young-culture",
+        "https://wknd-trendsetters.site/blog/fashion-trends-young-style",
+        "https://wknd-trendsetters.site/blog/flip-flop-summer-style",
+        "https://wknd-trendsetters.site/blog/latest-trends-young-casual-fashion",
+        "https://wknd-trendsetters.site/blog/street-style-trends"
+      ],
+      "coverageGaps": [],
+      "description": "Blog article detail page: a two-column article header (cover image + title/byline via columns-media) followed by the article body as default content.",
+      "blocks": [
+        {
+          "name": "columns-media",
+          "instances": [
+            "#main-content > section.section:nth-of-type(1) > div.container > div.grid-layout.tablet-1-column.grid-gap-lg",
+            "#main-content > section.section:nth-of-type(1) > div.container > div.grid-layout"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "faq-page",
+      "urls": [
+        "https://wknd-trendsetters.site/faq"
+      ],
+      "coverageGaps": [],
+      "description": "FAQ page: hero intro columns, FAQ accordion, contact columns, closing accent CTA (default content).",
+      "blocks": [
+        {
+          "name": "section-0",
+          "instances": [
+            "#main-content > header.section.secondary-section"
+          ],
+          "section": "secondary"
+        },
+        {
+          "name": "section-2",
+          "instances": [
+            "#main-content > section.section.secondary-section"
+          ],
+          "section": "secondary"
+        },
+        {
+          "name": "section-3",
+          "instances": [
+            "#main-content > section.section.accent-section"
+          ],
+          "section": "accent"
+        },
+        {
+          "name": "columns-media",
+          "instances": [
+            "#main-content > header.section.secondary-section > div.container > div.grid-layout.tablet-1-column.grid-gap-xxl"
+          ]
+        },
+        {
+          "name": "accordion-faq",
+          "instances": [
+            "#main-content > section.section:nth-of-type(1) div.faq-list"
+          ]
+        },
+        {
+          "name": "columns-contact",
+          "instances": [
+            "#main-content > section.section.secondary-section > div.container > div.grid-layout.tablet-1-column.grid-gap-xxl"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "editorial-feature",
+      "urls": [
+        "https://wknd-trendsetters.site/fashion-trends-young-adults-casual-sport"
+      ],
+      "coverageGaps": [],
+      "description": "Editorial feature: hero intro columns, trend card grid, feature promo columns, closing accent CTA (default content).",
+      "blocks": [
+        {
+          "name": "section-0",
+          "instances": [
+            "#main-content > header.section.secondary-section"
+          ],
+          "section": "secondary"
+        },
+        {
+          "name": "section-2",
+          "instances": [
+            "#main-content > section.section.secondary-section"
+          ],
+          "section": "secondary"
+        },
+        {
+          "name": "section-3",
+          "instances": [
+            "#main-content > section.section.accent-section"
+          ],
+          "section": "accent"
+        },
+        {
+          "name": "columns-media",
+          "instances": [
+            "#main-content > header.section.secondary-section > div.container > div.grid-layout.tablet-1-column.grid-gap-xxl"
+          ]
+        },
+        {
+          "name": "cards-article",
+          "instances": [
+            "#main-content > section.section#trends > div.container > div.grid-layout.desktop-4-column.tablet-2-column-1.mobile-portrait-1-column.grid-gap-md"
+          ]
+        },
+        {
+          "name": "columns-media",
+          "instances": [
+            "#main-content > section.section.secondary-section > div.container > div.grid-layout.tablet-1-column.grid-gap-lg"
+          ]
+        }
+      ]
+    }
+  ]
+}

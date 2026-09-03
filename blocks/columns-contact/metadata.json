@@ -1,0 +1,39 @@
+{
+  "variantName": "columns-contact",
+  "baseBlock": "columns",
+  "version": "1.0.0",
+  "created": "2026-09-03T05:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://wknd-trendsetters.site/faq",
+    "originPage": "FAQ page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "contact",
+    "imagePattern": "noimg"
+  },
+  "contentPattern": {
+    "structure": "text column (heading + lead) + contact-list column (labelled email/phone/address items)",
+    "buttonCount": 0,
+    "imageCount": 0
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "contact sections pairing intro copy with labelled contact details",
+      "two-column text layouts with a labelled key/value list",
+      "'get in touch' / 'let's connect' blocks with no imagery"
+    ],
+    "notSuitableFor": [
+      "two-column layouts that include imagery (use columns-media)",
+      "repeating card grids",
+      "full-width overlay banners"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/faq"],
+    "reuseCount": 1,
+    "lastUsed": "2026-09-03T05:00:00.000Z"
+  }
+}

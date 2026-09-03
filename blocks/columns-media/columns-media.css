@@ -1,0 +1,128 @@
+/* columns-media — two-column text/media layout.
+   Robust to two documented patterns:
+   - hero: text column + media gallery (multiple images wrapped in a <p>)
+   - article header: single image column + content column
+   Extracted from https://wknd-trendsetters.site/about-us computed styles. */
+
+/* ---- Row layout ---- */
+.columns-media > div {
+  display: grid;
+  gap: 24px; /* article-header pairing (grid-gap-lg) */
+}
+
+/* hero gallery uses a wider gap (grid-gap-xxl) */
+.columns-media > div:has(.columns-media-img-col > p) {
+  gap: 64px;
+}
+
+/* ---- Headings ---- */
+.columns-media h1,
+.columns-media h2 {
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.columns-media h1 {
+  font-size: 28px;
+  letter-spacing: -0.56px;
+}
+
+.columns-media h2 {
+  font-size: 24px;
+}
+
+/* ---- Body copy ---- */
+.columns-media p {
+  margin: 24px 0 0;
+  font-size: var(--body-font-size-m);
+  line-height: 1.6;
+}
+
+/* ---- Media / images ---- */
+.columns-media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.columns-media-img-col picture {
+  display: block;
+}
+
+/* gallery: multiple images grouped in a single <p> */
+.columns-media-img-col > p {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+}
+
+/* ---- CTA pill links (hero) ---- */
+
+/* Two links share one paragraph, so EDS does not decorate them as buttons.
+   Style the final links paragraph of a text column as pill buttons. */
+.columns-media > div > div > p:has(> a):last-child {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 32px 0 0;
+}
+
+.columns-media > div > div > p:has(> a):last-child a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border: 2px solid var(--dark-color);
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+}
+
+/* primary CTA — solid dark */
+.columns-media > div > div > p:has(> a):last-child a:first-child {
+  background-color: var(--dark-color);
+  color: var(--background-color);
+}
+
+/* secondary CTA — outline */
+.columns-media > div > div > p:has(> a):last-child a:nth-child(2) {
+  background-color: var(--background-color);
+  color: var(--dark-color);
+}
+
+.columns-media > div > div > p:has(> a):last-child a:first-child:hover {
+  background-color: var(--background-color);
+  color: var(--dark-color);
+}
+
+.columns-media > div > div > p:has(> a):last-child a:nth-child(2):hover {
+  background-color: var(--dark-color);
+  color: var(--background-color);
+}
+
+/* ---- Desktop ---- */
+@media (width >= 900px) {
+  .columns-media > div {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+
+  .columns-media h1 {
+    font-size: 56px;
+    letter-spacing: -1.12px;
+  }
+
+  .columns-media h2 {
+    font-size: 40px;
+  }
+
+  .columns-media-img-col > p {
+    grid-template-columns: 1fr 1fr;
+  }
+}

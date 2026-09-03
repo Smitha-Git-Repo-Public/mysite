@@ -1,0 +1,149 @@
+/* tabs-profiles — testimonial tab switcher (avatar+name+role tabs, photo+quote panels) */
+
+/* Block: stack panel above the tablist to match source (JS prepends the tablist) */
+.tabs-profiles {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Panel (photo + quote) ---------- */
+.tabs-profiles .tabs-profiles-panel {
+  order: 1;
+  padding: 0;
+}
+
+.tabs-profiles .tabs-profiles-panel[aria-hidden='true'] {
+  display: none;
+}
+
+.tabs-profiles .tabs-profiles-panel > div {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (width >= 900px) {
+  .tabs-profiles .tabs-profiles-panel > div {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+}
+
+.tabs-profiles .tabs-profiles-panel > div img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* text column */
+.tabs-profiles .tabs-profiles-panel-body p {
+  margin: 0;
+}
+
+/* name */
+.tabs-profiles .tabs-profiles-panel-body p:has(strong) {
+  font-size: 20px;
+  line-height: 32px;
+}
+
+.tabs-profiles .tabs-profiles-panel-body p:has(strong) strong {
+  font-weight: 700;
+}
+
+/* role (plain paragraph directly after the name, before the quote) */
+.tabs-profiles .tabs-profiles-panel-body p:has(strong) + p {
+  margin-bottom: 32px;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+/* quote — last paragraph */
+.tabs-profiles .tabs-profiles-panel-body p:last-child {
+  font-size: 20px;
+  line-height: 32px;
+}
+
+/* panel image — 4/3 rounded cover */
+.tabs-profiles .tabs-profiles-panel-image {
+  margin: 0;
+  aspect-ratio: 4 / 3;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* ---------- Tablist ---------- */
+.tabs-profiles .tabs-profiles-list {
+  order: 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin: 24px 0 0;
+  padding: 0;
+  max-width: 100%;
+}
+
+@media (width >= 600px) {
+  .tabs-profiles .tabs-profiles-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  .tabs-profiles .tabs-profiles-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ---------- Tab button ---------- */
+.tabs-profiles .tabs-profiles-list button.tabs-profiles-tab {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  align-items: center;
+  column-gap: 8px;
+  margin: 0;
+  border: 1px solid #e8e8e8;
+  border-radius: 16px;
+  padding: 16px;
+  background-color: #efefef;
+  color: var(--text-color);
+  font-weight: normal;
+  line-height: 1.4;
+  text-align: left;
+  overflow: unset;
+  white-space: unset;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.tabs-profiles .tabs-profiles-list button.tabs-profiles-tab p {
+  grid-column: 2;
+  margin: 0;
+  font-size: 14px;
+}
+
+/* avatar cell spans both text rows */
+.tabs-profiles .tabs-profiles-list button.tabs-profiles-tab p:has(img) {
+  grid-row: 1 / span 2;
+  grid-column: 1;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.tabs-profiles .tabs-profiles-list button.tabs-profiles-tab img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.tabs-profiles .tabs-profiles-list button.tabs-profiles-tab p strong {
+  font-weight: 700;
+}
+
+/* selected tab: lighter fill, dark border */
+.tabs-profiles .tabs-profiles-list button.tabs-profiles-tab[aria-selected='true'] {
+  border-color: var(--text-color);
+  background-color: var(--light-color);
+  cursor: default;
+}

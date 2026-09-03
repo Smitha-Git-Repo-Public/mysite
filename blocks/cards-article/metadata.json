@@ -1,0 +1,42 @@
+{
+  "variantName": "cards-article",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-09-02T17:40:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://wknd-trendsetters.site/about-us",
+    "originPage": "About Us page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "article",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "image + tag + date + title (linked)",
+    "buttonCount": 0,
+    "imageCount": 4
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "article/blog listings with cover image, category tag, date and title",
+      "linked content teasers in a grid"
+    ],
+    "notSuitableFor": [
+      "image-only galleries",
+      "cards with long body copy and CTA buttons"
+    ]
+  },
+  "usage": {
+    "pagesUsing": [
+      "/about-us",
+      "/blog",
+      "/index",
+      "/fashion-trends-young-adults-casual-sport"
+    ],
+    "reuseCount": 4,
+    "lastUsed": "2026-09-03T00:00:00.000Z"
+  }
+}

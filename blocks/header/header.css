@@ -1,272 +1,328 @@
-/* header and nav layout */
-header .nav-wrapper {
-  background-color: var(--background-color);
-  width: 100%;
-  z-index: 2;
-  position: fixed;
+/* Header nav — migrated from wknd-trendsetters.site
+ * Mobile-first: base rules are mobile; min-width media queries enhance desktop.
+ */
+
+/* ---------- Wrapper / bar ---------- */
+.header .nav-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background-color: #fff;
+  border-bottom: 1px solid #e8e8e8;
 }
 
-header nav {
-  box-sizing: border-box;
+.header nav {
   display: grid;
-  grid-template:
-    'hamburger brand tools' var(--nav-height)
-    'sections sections sections' 1fr / auto 1fr auto;
+  grid-template-areas: 'hamburger brand tools';
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 0 24px;
-  margin: auto;
-  max-width: 1248px;
-  height: var(--nav-height);
+  gap: 16px;
+  min-height: 64px;
   padding: 0 24px;
   font-family: var(--body-font-family);
 }
 
-header nav[aria-expanded='true'] {
-  grid-template:
-    'hamburger brand' var(--nav-height)
-    'sections sections' 1fr
-    'tools tools' var(--nav-height) / auto 1fr;
-  overflow-y: auto;
-  min-height: 100dvh;
+/* ---------- Brand ---------- */
+.header nav .nav-brand {
+  grid-area: brand;
 }
 
-@media (width >= 900px) {
-  header .nav-wrapper {
-    position: relative;
-  }
-
-  header nav {
-    display: flex;
-    justify-content: space-between;
-    gap: 0 32px;
-    max-width: 1264px;
-    padding: 0 32px;
-  }
-
-  header nav[aria-expanded='true'] {
-    min-height: 0;
-    overflow: visible;
-  }
-}
-
-header nav p {
+.header nav .nav-brand p {
   margin: 0;
-  line-height: 1;
 }
 
-header nav a:any-link {
-  color: currentcolor;
+.header nav .nav-brand a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #000;
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: none;
 }
 
-/* hamburger */
-header nav .nav-hamburger {
+.header nav .nav-brand img {
+  width: 28px;
+  height: 28px;
+}
+
+/* ---------- Hamburger (mobile) ---------- */
+.header nav .nav-hamburger {
   grid-area: hamburger;
-  height: 22px;
+}
+
+.header nav .nav-hamburger button {
   display: flex;
   align-items: center;
-}
-
-header nav .nav-hamburger button {
-  height: 22px;
-  margin: 0;
-  border: 0;
-  border-radius: 0;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
   padding: 0;
-  background-color: var(--background-color);
-  color: inherit;
-  overflow: initial;
-  text-overflow: initial;
-  white-space: initial;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
 }
 
-header nav .nav-hamburger-icon,
-header nav .nav-hamburger-icon::before,
-header nav .nav-hamburger-icon::after {
+.header nav .nav-hamburger-icon,
+.header nav .nav-hamburger-icon::before,
+.header nav .nav-hamburger-icon::after {
   box-sizing: border-box;
   display: block;
   position: relative;
-  width: 20px;
+  width: 22px;
+  height: 2px;
+  background: #000;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-header nav .nav-hamburger-icon::before,
-header nav .nav-hamburger-icon::after {
+.header nav .nav-hamburger-icon::before,
+.header nav .nav-hamburger-icon::after {
   content: '';
   position: absolute;
-  background: currentcolor;
+  left: 0;
 }
 
-header nav[aria-expanded='false'] .nav-hamburger-icon,
-header nav[aria-expanded='false'] .nav-hamburger-icon::before,
-header nav[aria-expanded='false'] .nav-hamburger-icon::after {
-  height: 2px;
-  border-radius: 2px;
-  background: currentcolor;
+.header nav .nav-hamburger-icon::before { top: -7px; }
+.header nav .nav-hamburger-icon::after { top: 7px; }
+
+/* hamburger morphs to a cross when the drawer is open */
+.header nav[aria-expanded='true'] .nav-hamburger-icon {
+  background: transparent;
 }
 
-header nav[aria-expanded='false'] .nav-hamburger-icon::before {
-  top: -6px;
-}
-
-header nav[aria-expanded='false'] .nav-hamburger-icon::after {
-  top: 6px;
-}
-
-header nav[aria-expanded='true'] .nav-hamburger-icon {
-  height: 22px;
-}
-
-header nav[aria-expanded='true'] .nav-hamburger-icon::before,
-header nav[aria-expanded='true'] .nav-hamburger-icon::after {
-  top: 3px;
-  left: 1px;
+.header nav[aria-expanded='true'] .nav-hamburger-icon::before {
+  top: 0;
   transform: rotate(45deg);
-  transform-origin: 2px 1px;
-  width: 24px;
-  height: 2px;
-  border-radius: 2px;
 }
 
-header nav[aria-expanded='true'] .nav-hamburger-icon::after {
-  top: unset;
-  bottom: 3px;
+.header nav[aria-expanded='true'] .nav-hamburger-icon::after {
+  top: 0;
   transform: rotate(-45deg);
 }
 
-@media (width >= 900px) {
-  header nav .nav-hamburger {
-    display: none;
-    visibility: hidden;
-  }
-}
-
-/* brand */
-header .nav-brand {
-  grid-area: brand;
-  flex-basis: 128px;
-  font-size: var(--heading-font-size-s);
-  font-weight: 700;
-  line-height: 1;
-}
-
-header nav .nav-brand img {
-  width: 128px;
-  height: auto;
-}
-
-/* sections */
-header nav .nav-sections {
+/* ---------- Sections (mobile drawer, hidden by default) ---------- */
+.header nav .nav-sections {
   grid-area: sections;
-  flex: 1 1 auto;
   display: none;
-  visibility: hidden;
 }
 
-header nav[aria-expanded='true'] .nav-sections {
+.header nav[aria-expanded='true'] .nav-sections {
   display: block;
-  visibility: visible;
-  align-self: start;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 64px;
+  max-height: calc(100vh - 64px);
+  overflow-y: auto;
+  padding: 8px 0 24px;
+  background: #fff;
+  border-bottom: 1px solid #e8e8e8;
 }
 
-header nav .nav-sections ul {
+.header nav .nav-sections ul {
   list-style: none;
-  padding-left: 0;
-  font-size: var(--body-font-size-s);
+  margin: 0;
+  padding: 0;
 }
 
-header nav .nav-sections ul > li {
-  font-weight: 500;
+/* mobile: top-level items are full-width flush, with padding inside for text */
+.header nav .nav-sections > ul > li {
+  width: 100%;
+  padding: 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 16px;
+  font-weight: 600;
 }
 
-header nav .nav-sections ul > li > ul {
-  margin-top: 0;
+.header nav .nav-sections > ul > li > p,
+.header nav .nav-sections > ul > li > a {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 14px 24px;
 }
 
-header nav .nav-sections ul > li > ul > li {
+/* dropdown/megamenu trigger rendered as a button by header.js */
+.header nav .nav-sections .nav-drop-toggle {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 14px 24px;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-weight: 600;
+  color: #000;
+  text-align: left;
+  cursor: pointer;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.header nav .nav-sections a {
+  color: #000;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* sub-panels collapsed by default (accordion on mobile) */
+.header nav .nav-sections > ul > li > ul {
+  display: none;
+  margin-top: 4px;
+  padding: 0 24px 8px;
+}
+
+.header nav .nav-sections > ul > li[aria-expanded='true'] > ul,
+.header nav .nav-sections > ul > li:has(> .nav-drop-toggle[aria-expanded='true']) > ul {
+  display: block;
+}
+
+.header nav .nav-sections > ul > li > ul > li {
+  padding: 8px 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.header nav .nav-sections > ul > li > ul ul {
+  display: block;
+  padding-left: 12px;
+}
+
+.header nav .nav-sections > ul > li > ul ul li {
   font-weight: 400;
+  color: #555;
 }
 
+/* ---------- Tools / Subscribe ---------- */
+.header nav .nav-tools {
+  grid-area: tools;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.header nav .nav-tools p {
+  margin: 0;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.header nav .nav-tools a {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  background: #000;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* ---------- Desktop (>= 900px) ---------- */
 @media (width >= 900px) {
-  header nav .nav-sections {
+  .header nav {
+    grid-template-areas: 'brand sections tools';
+    grid-template-columns: auto 1fr auto;
+    min-height: 83px;
+    padding: 0 32px;
+  }
+
+  .header nav .nav-hamburger {
+    display: none;
+  }
+
+  /* sections become a horizontal bar, always visible */
+  .header nav .nav-sections,
+  .header nav[aria-expanded='true'] .nav-sections {
     display: block;
-    visibility: visible;
+    position: static;
+    max-height: none;
+    overflow: visible;
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+
+  .header nav .nav-sections > ul {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+  }
+
+  .header nav .nav-sections > ul > li {
+    position: relative;
+    width: auto;
+    padding: 0;
+    border: 0;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  /* reset mobile full-width padding for the horizontal desktop bar */
+  .header nav .nav-sections > ul > li > p,
+  .header nav .nav-sections > ul > li > a,
+  .header nav .nav-sections .nav-drop-toggle {
+    display: inline-block;
+    width: auto;
+    padding: 0;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  /* top-level nav links back to desktop sizing */
+  .header nav .nav-sections > ul > li > a {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  /* top-level megamenu/dropdown panel: absolute, opens on hover (aria-expanded) */
+  .header nav .nav-sections > ul > li.nav-drop > ul {
+    display: none;
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 0;
+    min-width: 220px;
+    margin: 0;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 12px;
+    box-shadow: 0 12px 32px rgb(0 0 0 / 12%);
+  }
+
+  .header nav .nav-sections > ul > li.nav-drop[aria-expanded='true'] > ul,
+  .header nav .nav-sections > ul > li.nav-drop:has(> .nav-drop-toggle[aria-expanded='true']) > ul {
+    display: flex;
+    gap: 40px;
+  }
+
+  /* megamenu column headings */
+  .header nav .nav-sections > ul > li.nav-drop > ul > li > p {
+    margin: 0 0 8px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #999;
+  }
+
+  .header nav .nav-sections > ul > li.nav-drop > ul > li {
+    padding: 0;
+    border: 0;
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  .header nav .nav-sections > ul > li.nav-drop > ul ul {
+    padding: 0;
+  }
+
+  .header nav .nav-sections > ul > li.nav-drop > ul ul li {
+    padding: 6px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #000;
     white-space: nowrap;
   }
 
-  header nav[aria-expanded='true'] .nav-sections {
-    align-self: unset;
-  }
-
-  header nav .nav-sections .nav-drop {
-    position: relative;
-    padding-right: 16px;
-    cursor: pointer;
-  }
-
-  header nav .nav-sections .nav-drop::after {
-    content: '';
-    display: inline-block;
-    position: absolute;
-    top: 0.5em;
-    right: 2px;
-    transform: rotate(135deg);
-    width: 6px;
-    height: 6px;
-    border: 2px solid currentcolor;
-    border-radius: 0 1px 0 0;
-    border-width: 2px 2px 0 0;
-  }
-
-  header nav .nav-sections .nav-drop[aria-expanded='true']::after {
-    top: unset;
-    bottom: 0.5em;
-    transform: rotate(315deg);
-  }
-
-  header nav .nav-sections ul {
-    display: flex;
-    gap: 24px;
-    margin: 0;
-  }
-
-  header nav .nav-sections .default-content-wrapper > ul > li {
-    flex: 0 1 auto;
-    position: relative;
-  }
-
-  header nav .nav-sections .default-content-wrapper > ul > li > ul {
-    display: none;
-    position: relative;
-  }
-
-  header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > ul {
+  .header nav .nav-sections > ul > li.nav-drop > ul ul li a {
     display: block;
-    position: absolute;
-    left: -24px;
-    width: 200px;
-    top: 150%;
-    padding: 16px;
-    background-color: var(--light-color);
-    white-space: initial;
   }
-
-  header nav .nav-sections .default-content-wrapper > ul > li > ul::before {
-    content: '';
-    position: absolute;
-    top: -8px;
-    left: 16px;
-    width: 0;
-    height: 0;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-bottom: 8px solid var(--light-color);
-  }
-
-  header nav .nav-sections .default-content-wrapper > ul > li > ul > li {
-    padding: 8px 0;
-  }
-}
-
-/* tools */
-header nav .nav-tools {
-  grid-area: tools;
 }

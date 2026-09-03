@@ -1,0 +1,152 @@
+{
+  "content-landing": {
+    "urls": [
+      "https://wknd-trendsetters.site/"
+    ],
+    "repr": "https://wknd-trendsetters.site/",
+    "desc": "Homepage / content landing: intro columns, article header, photo gallery, testimonial tabs, latest-articles cards, FAQ accordion, closing overlay hero.",
+    "sections": [
+      {
+        "sel": "#main-content > header.section.secondary-section",
+        "style": "secondary",
+        "block": "columns-media",
+        "bc": "#main-content > header.section.secondary-section > div.container > div.grid-layout.tablet-1-column.grid-gap-xxl"
+      },
+      {
+        "sel": "#main-content > section.section:nth-of-type(1)",
+        "style": null,
+        "block": "columns-media",
+        "bc": "#main-content > section.section:nth-of-type(1) > div.container > div.grid-layout.tablet-1-column.grid-gap-lg"
+      },
+      {
+        "sel": "#main-content > section.section.secondary-section:nth-of-type(2)",
+        "style": "secondary",
+        "block": "cards-gallery",
+        "bc": "#main-content > section.section.secondary-section:nth-of-type(2) > div.container > div.grid-layout.desktop-4-column.tablet-2-column-1.mobile-portrait-1-column.grid-gap-sm"
+      },
+      {
+        "sel": "#main-content > section.section:nth-of-type(3)",
+        "style": null,
+        "block": "tabs-profiles",
+        "bc": "#main-content > section.section:nth-of-type(3) > div.container > div.tabs-wrapper"
+      },
+      {
+        "sel": "#main-content > section.section.secondary-section:nth-of-type(4)",
+        "style": "secondary",
+        "block": "cards-article",
+        "bc": "#main-content > section.section.secondary-section:nth-of-type(4) > div.container > div.grid-layout.desktop-4-column.tablet-2-column-1.mobile-portrait-1-column.grid-gap-md"
+      },
+      {
+        "sel": "#main-content > section.section:nth-of-type(5)",
+        "style": null,
+        "block": "accordion-faq",
+        "bc": "#main-content > section.section:nth-of-type(5) div.faq-list"
+      },
+      {
+        "sel": "#main-content > section.section.inverse-section",
+        "style": null,
+        "block": "hero-overlay",
+        "bc": "#main-content > section.section.inverse-section > div.container > div.grid-layout.desktop-1-column"
+      }
+    ]
+  },
+  "content-listing": {
+    "urls": [
+      "https://wknd-trendsetters.site/blog"
+    ],
+    "repr": "https://wknd-trendsetters.site/blog",
+    "desc": "Blog index/listing: hero intro columns, featured article columns, latest-articles card grid, closing accent CTA (default content).",
+    "sections": [
+      {
+        "sel": "#main-content > header.secondary-section",
+        "style": "secondary",
+        "block": "columns-media",
+        "bc": "#main-content > header.secondary-section > div.container > div.grid-layout.tablet-1-column.grid-gap-xxl"
+      },
+      {
+        "sel": "#main-content > section.section:not(.secondary-section):not(.accent-section)",
+        "style": null,
+        "block": "columns-media",
+        "bc": "#main-content > section.section:not(.secondary-section):not(.accent-section) > div.container > div.grid-layout.tablet-1-column.grid-gap-lg"
+      },
+      {
+        "sel": "#main-content > section.secondary-section#articles",
+        "style": "secondary",
+        "block": "cards-article",
+        "bc": "#main-content > section.secondary-section#articles > div.container > div.grid-layout.desktop-4-column.tablet-2-column-1.mobile-portrait-1-column.grid-gap-md"
+      },
+      {
+        "sel": "#main-content > section.accent-section",
+        "style": "accent",
+        "block": null,
+        "bc": null
+      }
+    ]
+  },
+  "faq-page": {
+    "urls": [
+      "https://wknd-trendsetters.site/faq"
+    ],
+    "repr": "https://wknd-trendsetters.site/faq",
+    "desc": "FAQ page: hero intro columns, FAQ accordion, contact columns, closing accent CTA (default content).",
+    "sections": [
+      {
+        "sel": "#main-content > header.section.secondary-section",
+        "style": "secondary",
+        "block": "columns-media",
+        "bc": "#main-content > header.section.secondary-section > div.container > div.grid-layout.tablet-1-column.grid-gap-xxl"
+      },
+      {
+        "sel": "#main-content > section.section:nth-of-type(1)",
+        "style": null,
+        "block": "accordion-faq",
+        "bc": "#main-content > section.section:nth-of-type(1) div.faq-list"
+      },
+      {
+        "sel": "#main-content > section.section.secondary-section",
+        "style": "secondary",
+        "block": "columns-contact",
+        "bc": "#main-content > section.section.secondary-section > div.container > div.grid-layout.tablet-1-column.grid-gap-xxl"
+      },
+      {
+        "sel": "#main-content > section.section.accent-section",
+        "style": "accent",
+        "block": null,
+        "bc": null
+      }
+    ]
+  },
+  "editorial-feature": {
+    "urls": [
+      "https://wknd-trendsetters.site/fashion-trends-young-adults-casual-sport"
+    ],
+    "repr": "https://wknd-trendsetters.site/fashion-trends-young-adults-casual-sport",
+    "desc": "Editorial feature: hero intro columns, trend card grid, feature promo columns, closing accent CTA (default content).",
+    "sections": [
+      {
+        "sel": "#main-content > header.section.secondary-section",
+        "style": "secondary",
+        "block": "columns-media",
+        "bc": "#main-content > header.section.secondary-section > div.container > div.grid-layout.tablet-1-column.grid-gap-xxl"
+      },
+      {
+        "sel": "#main-content > section.section#trends",
+        "style": null,
+        "block": "cards-article",
+        "bc": "#main-content > section.section#trends > div.container > div.grid-layout.desktop-4-column.tablet-2-column-1.mobile-portrait-1-column.grid-gap-md"
+      },
+      {
+        "sel": "#main-content > section.section.secondary-section",
+        "style": "secondary",
+        "block": "columns-media",
+        "bc": "#main-content > section.section.secondary-section > div.container > div.grid-layout.tablet-1-column.grid-gap-lg"
+      },
+      {
+        "sel": "#main-content > section.section.accent-section",
+        "style": "accent",
+        "block": null,
+        "bc": null
+      }
+    ]
+  }
+}

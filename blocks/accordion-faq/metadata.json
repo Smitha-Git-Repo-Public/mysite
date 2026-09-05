@@ -34,9 +34,10 @@
     "pagesUsing": [
       "/about-us",
       "/index",
-      "/faq"
+      "/faq",
+      "/us/en/faqs"
     ],
-    "reuseCount": 3,
-    "lastUsed": "2026-09-03T05:00:00.000Z"
+    "reuseCount": 4,
+    "lastUsed": "2026-09-05T00:00:00.000Z"
   }
 }

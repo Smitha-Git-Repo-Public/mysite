@@ -1,0 +1,41 @@
+{
+  "variantName": "columns-featured",
+  "baseBlock": "columns",
+  "version": "1.0.0",
+  "created": "2026-09-05T17:30:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://wknd.site/us/en.html",
+    "originPage": "WKND home page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "grey",
+    "density": "spacious",
+    "purpose": "featured-article",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "image column + text column (pretitle + heading + description + CTA)",
+    "buttonCount": 1,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "featured-article teasers pairing a large image with heading, blurb and a CTA",
+      "two-column promotional callouts on a tinted (grey) section background",
+      "editorial highlights with an eyebrow/pretitle label"
+    ],
+    "notSuitableFor": [
+      "full-bleed overlay hero banners (use hero-carousel/hero-feature)",
+      "repeating card grids",
+      "text-only content"
+    ]
+  },
+  "usage": {
+    "pagesUsing": [
+      "/us/en"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-09-05T17:30:00.000Z"
+  }
+}

@@ -1,0 +1,118 @@
+/* Block: hero-feature — WKND single feature hero.
+   Full-bleed background image with a white content card overlaid lower-left
+   (heading, description, yellow CTA). Mirrors hero-carousel styling without
+   rotating slides/indicators. */
+
+.hero-feature-container .hero-feature-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.hero-feature {
+  position: relative;
+  min-height: 420px;
+}
+
+/* Background image fills the block */
+.hero-feature .hero-feature-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  margin: 0;
+  line-height: 0;
+}
+
+.hero-feature .hero-feature-image picture,
+.hero-feature .hero-feature-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* White content card overlaid near the bottom-left */
+.hero-feature .hero-feature-content {
+  position: relative;
+  z-index: 1;
+  margin: 0 24px;
+  top: 260px;
+  max-width: 640px;
+  background-color: var(--background-color);
+  padding: 32px 32px 40px;
+}
+
+.hero-feature .hero-feature-content h1,
+.hero-feature .hero-feature-content h2,
+.hero-feature .hero-feature-content h3 {
+  margin: 0 0 16px;
+  color: var(--text-color);
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-l);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.hero-feature .hero-feature-content p {
+  margin: 0;
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  line-height: 1.6;
+}
+
+/* Yellow CTA */
+.hero-feature .hero-feature-content .button-container {
+  margin: 24px 0 0;
+}
+
+.hero-feature a.button:any-link {
+  border: none;
+  border-radius: 0;
+  padding: 12px 24px;
+  background-color: var(--link-color, #ffea00);
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-s);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+}
+
+.hero-feature a.button:any-link:hover,
+.hero-feature a.button:any-link:focus-visible {
+  background-color: var(--dark-color);
+  color: var(--background-color);
+}
+
+/* No-image fallback: dark text on light background */
+.hero-feature.no-image {
+  min-height: 0;
+}
+
+.hero-feature.no-image .hero-feature-content {
+  position: static;
+  top: 0;
+  margin: 0;
+  max-width: none;
+  padding: 24px 0;
+  background-color: transparent;
+}
+
+@media (width >= 900px) {
+  .hero-feature {
+    min-height: 560px;
+  }
+
+  .hero-feature .hero-feature-content {
+    margin: 0;
+    top: 380px;
+    left: 48px;
+    padding: 40px 48px 48px;
+  }
+
+  .hero-feature .hero-feature-content h1,
+  .hero-feature .hero-feature-content h2,
+  .hero-feature .hero-feature-content h3 {
+    font-size: var(--heading-font-size-xl);
+  }
+}

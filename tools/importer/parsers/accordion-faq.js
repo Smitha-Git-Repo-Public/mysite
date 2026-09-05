@@ -1,43 +1,36 @@
 /* eslint-disable */
 /* global WebImporter */
 /**
- * Parser for accordion-faq. Base: accordion.
- * Source: https://wknd-trendsetters.site/about-us
- * Generated: 2026-09-02
- *
- * Structure (from library-description.txt): 2 columns, multiple rows.
- * Each subsequent row is an accordion item: [title cell, content cell].
- * Source: <div class="faq-list"> > <details class="faq-item"> with
- *   <summary class="faq-question"><span>Title</span><img/></summary>
- *   <div class="faq-answer"><p>Answer</p></div>
+ * Parser for accordion-faq. Base block: accordion.
+ * Source: https://wknd.site/us/en/faqs.html (.cmp-accordion)
+ * Structure: 2 columns. Row 1 = block name. Each subsequent row = one accordion
+ *   item: [question title, answer content].
  */
 export default function parse(element, { document }) {
-  // Each accordion item is a <details> (fallback to any direct child block if markup varies).
-  const items = element.querySelectorAll('details.faq-item, details');
-
+  const items = Array.from(element.querySelectorAll('.cmp-accordion__item'));
   const cells = [];
 
   items.forEach((item) => {
-    // Title: the text label inside the summary. Prefer the span so we drop the toggle icon.
-    const summary = item.querySelector('summary.faq-question, summary');
-    const titleSource = summary
-      ? (summary.querySelector('span') || summary)
-      : item.querySelector('h1, h2, h3, h4, [class*="question"]');
+    // Question / title (mandatory)
+    const titleEl = item.querySelector('.cmp-accordion__title, .cmp-accordion__button, .cmp-accordion__header');
+    const question = titleEl ? titleEl.textContent.trim() : '';
 
-    // Content: the answer body.
-    const content = item.querySelector('div.faq-answer, [class*="answer"]');
+    // Answer / panel content (mandatory)
+    const panel = item.querySelector('.cmp-accordion__panel');
+    let answer = '';
+    if (panel) {
+      const bodyEls = Array.from(panel.querySelectorAll('p, h1, h2, h3, h4, h5, h6, ul, ol'))
+        .filter((el) => el.textContent.trim().length > 0);
+      answer = bodyEls.length ? bodyEls : panel;
+    }
 
-    if (!titleSource && !content) return;
-
-    // Build a clean title element containing just the label text (no icon).
-    const titleEl = document.createElement('p');
-    titleEl.textContent = (titleSource ? titleSource.textContent : '').trim();
-
-    cells.push([titleEl, content || '']);
+    if (question || (answer && (Array.isArray(answer) ? answer.length : true))) {
+      cells.push([question, answer]);
+    }
   });
 
-  // Empty-block guard: no items extracted.
-  if (cells.length === 0) {
+  // Empty-block guard
+  if (!cells.length) {
     element.replaceWith(...element.childNodes);
     return;
   }

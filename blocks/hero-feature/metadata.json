@@ -1,0 +1,42 @@
+{
+  "variantName": "hero-feature",
+  "baseBlock": "hero",
+  "version": "1.0.0",
+  "created": "2026-09-05T17:30:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://wknd.site/us/en.html",
+    "originPage": "WKND home page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "feature-hero",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "background image + heading + description + 1 CTA",
+    "buttonCount": 1,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "single full-bleed feature banners with an overlaid white content card",
+      "mid-page promotional heroes with heading, blurb and one CTA over a photo",
+      "closing 'featured trip/adventure' banners"
+    ],
+    "notSuitableFor": [
+      "rotating multi-slide carousels (use hero-carousel)",
+      "two-column text-and-media feature layouts",
+      "repeating card grids"
+    ]
+  },
+  "usage": {
+    "pagesUsing": [
+      "/us/en",
+      "/us/en/adventures"
+    ],
+    "reuseCount": 2,
+    "lastUsed": "2026-09-05T18:00:00.000Z"
+  }
+}

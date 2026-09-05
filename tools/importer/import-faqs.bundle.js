@@ -35,47 +35,34 @@ var CustomImportScript = (() => {
   };
   var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
-  // tools/importer/import-about-us.js
-  var import_about_us_exports = {};
-  __export(import_about_us_exports, {
-    default: () => import_about_us_default
+  // tools/importer/import-faqs.js
+  var import_faqs_exports = {};
+  __export(import_faqs_exports, {
+    default: () => import_faqs_default
   });
 
-  // tools/importer/parsers/cards-contributor.js
-  function parse(element, { document }) {
+  // tools/importer/parsers/accordion-faq.js
+  function parse(element, { document: document2 }) {
+    const items = Array.from(element.querySelectorAll(".cmp-accordion__item"));
     const cells = [];
-    let cards = [];
-    if (element.classList.contains("experiencefragment")) {
-      cards.push(element);
-      let sibling = element.nextElementSibling;
-      while (sibling && sibling.classList.contains("experiencefragment")) {
-        cards.push(sibling);
-        sibling = sibling.nextElementSibling;
+    items.forEach((item) => {
+      const titleEl = item.querySelector(".cmp-accordion__title, .cmp-accordion__button, .cmp-accordion__header");
+      const question = titleEl ? titleEl.textContent.trim() : "";
+      const panel = item.querySelector(".cmp-accordion__panel");
+      let answer = "";
+      if (panel) {
+        const bodyEls = Array.from(panel.querySelectorAll("p, h1, h2, h3, h4, h5, h6, ul, ol")).filter((el) => el.textContent.trim().length > 0);
+        answer = bodyEls.length ? bodyEls : panel;
       }
-    } else {
-      cards = Array.from(element.querySelectorAll(".experiencefragment.cmp-experience-fragment--contributor"));
-      if (!cards.length) {
-        cards = Array.from(element.querySelectorAll(".cmp-experiencefragment"));
-      }
-    }
-    cards.forEach((card) => {
-      const image = card.querySelector(".image img, img");
-      const contentCell = [];
-      const name = card.querySelector(".cmp-title__text");
-      const titles = Array.from(card.querySelectorAll(".cmp-title__text"));
-      if (titles[0]) contentCell.push(titles[0]);
-      if (titles[1]) contentCell.push(titles[1]);
-      const socialLinks = Array.from(card.querySelectorAll('.cmp-button, a[class*="button"], .buildingblock a'));
-      socialLinks.forEach((a) => contentCell.push(a));
-      if (image || contentCell.length) {
-        cells.push([image || "", contentCell.length ? contentCell : ""]);
+      if (question || answer && (Array.isArray(answer) ? answer.length : true)) {
+        cells.push([question, answer]);
       }
     });
     if (!cells.length) {
       element.replaceWith(...element.childNodes);
       return;
     }
-    const block = WebImporter.Blocks.createBlock(document, { name: "cards-contributor", cells });
+    const block = WebImporter.Blocks.createBlock(document2, { name: "accordion-faq", cells });
     element.replaceWith(block);
   }
 
@@ -128,22 +115,37 @@ var CustomImportScript = (() => {
     }
   }
 
-  // tools/importer/transformers/wknd-about-us-sections.js
+  // tools/importer/transformers/wknd-faqs-sections.js
+  function resolveSections(element) {
+    return [
+      // 1. FAQ main content — first section, no leading break.
+      { id: "s1", el: element.querySelector("#container-0e3ddb0dd6") },
+      // 2. "Need more help?" contact sidebar.
+      { id: "s2", el: element.querySelector("#container-ef2c6c2ddf") }
+    ];
+  }
   function transform2(hookName, element, payload) {
     if (hookName === "beforeTransform") {
+      const sections = resolveSections(element);
+      for (let i = sections.length - 1; i >= 1; i -= 1) {
+        const section = sections[i];
+        if (!section.el) continue;
+        const hr = document.createElement("hr");
+        section.el.before(hr);
+      }
     }
   }
 
-  // tools/importer/import-about-us.js
+  // tools/importer/import-faqs.js
   var parsers = {
-    "cards-contributor": parse
+    "accordion-faq": parse
   };
   var transformers = [transform, transform2];
   var PAGE_TEMPLATE = {
-    name: "about-us",
-    urls: ["https://wknd.site/us/en/about-us.html"],
+    name: "faqs",
+    urls: ["https://wknd.site/us/en/faqs.html"],
     blocks: [
-      { name: "cards-contributor", instances: [".text.cmp-text--font-small + .experiencefragment"] }
+      { name: "accordion-faq", instances: [".cmp-accordion"] }
     ]
   };
   function executeTransformers(hookName, element, payload) {
@@ -156,11 +158,11 @@ var CustomImportScript = (() => {
       }
     });
   }
-  function findBlocksOnPage(document, template) {
+  function findBlocksOnPage(document2, template) {
     const pageBlocks = [];
     template.blocks.forEach((blockDef) => {
       blockDef.instances.forEach((selector) => {
-        document.querySelectorAll(selector).forEach((element) => {
+        document2.querySelectorAll(selector).forEach((element) => {
           if (pageBlocks.some((b) => b.element === element)) return;
           pageBlocks.push({ name: blockDef.name, selector, element });
         });
@@ -169,33 +171,33 @@ var CustomImportScript = (() => {
     console.log("Found " + pageBlocks.length + " block instances on page");
     return pageBlocks;
   }
-  var import_about_us_default = {
+  var import_faqs_default = {
     transform: (payload) => {
-      const { document, url, params } = payload;
-      const main = document.body;
+      const { document: document2, url, params } = payload;
+      const main = document2.body;
       executeTransformers("beforeTransform", main, payload);
-      const pageBlocks = findBlocksOnPage(document, PAGE_TEMPLATE);
+      const pageBlocks = findBlocksOnPage(document2, PAGE_TEMPLATE);
       pageBlocks.forEach((block) => {
         if (!block.element.parentNode) return;
         const parser = parsers[block.name];
         if (parser) {
           try {
-            parser(block.element, { document, url, params });
+            parser(block.element, { document: document2, url, params });
           } catch (e) {
             console.error("Failed to parse " + block.name + ":", e);
           }
         }
       });
       executeTransformers("afterTransform", main, payload);
-      const hr = document.createElement("hr");
+      const hr = document2.createElement("hr");
       main.appendChild(hr);
-      WebImporter.rules.createMetadata(main, document);
-      WebImporter.rules.transformBackgroundImages(main, document);
+      WebImporter.rules.createMetadata(main, document2);
+      WebImporter.rules.transformBackgroundImages(main, document2);
       WebImporter.rules.adjustImageUrls(main, url, params.originalURL);
       const rawPath = new URL(params.originalURL).pathname.replace(/\/$/, "").replace(/\.html?$/, "");
       const path = WebImporter.FileUtils.sanitizePath(rawPath === "" ? "/index" : rawPath);
-      return [{ element: main, path, report: { title: document.title, template: PAGE_TEMPLATE.name, blocks: pageBlocks.map((b) => b.name) } }];
+      return [{ element: main, path, report: { title: document2.title, template: PAGE_TEMPLATE.name, blocks: pageBlocks.map((b) => b.name) } }];
     }
   };
-  return __toCommonJS(import_about_us_exports);
+  return __toCommonJS(import_faqs_exports);
 })();

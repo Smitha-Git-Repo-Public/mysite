@@ -1,19 +1,19 @@
 /* eslint-disable */
 /* global WebImporter */
-import cardsContributorParser from './parsers/cards-contributor.js';
+import accordionFaqParser from './parsers/accordion-faq.js';
 import cleanupTransformer from './transformers/wknd-cleanup.js';
-import sectionsTransformer from './transformers/wknd-about-us-sections.js';
+import sectionsTransformer from './transformers/wknd-faqs-sections.js';
 
 const parsers = {
-  'cards-contributor': cardsContributorParser,
+  'accordion-faq': accordionFaqParser,
 };
 const transformers = [cleanupTransformer, sectionsTransformer];
 
 const PAGE_TEMPLATE = {
-  name: 'about-us',
-  urls: ['https://wknd.site/us/en/about-us.html'],
+  name: 'faqs',
+  urls: ['https://wknd.site/us/en/faqs.html'],
   blocks: [
-    { name: 'cards-contributor', instances: [".text.cmp-text--font-small + .experiencefragment"] },
+    { name: 'accordion-faq', instances: [".cmp-accordion"] },
   ],
 };
 

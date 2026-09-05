@@ -1,19 +1,25 @@
 /* eslint-disable */
 /* global WebImporter */
-import cardsContributorParser from './parsers/cards-contributor.js';
+import heroCarouselParser from './parsers/hero-carousel.js';
+import columnsDetailsParser from './parsers/columns-details.js';
+import tabsContentParser from './parsers/tabs-content.js';
 import cleanupTransformer from './transformers/wknd-cleanup.js';
-import sectionsTransformer from './transformers/wknd-about-us-sections.js';
+import sectionsTransformer from './transformers/wknd-adventures-sections.js';
 
 const parsers = {
-  'cards-contributor': cardsContributorParser,
+  'hero-carousel': heroCarouselParser,
+  'columns-details': columnsDetailsParser,
+  'tabs-content': tabsContentParser,
 };
 const transformers = [cleanupTransformer, sectionsTransformer];
 
 const PAGE_TEMPLATE = {
-  name: 'about-us',
-  urls: ['https://wknd.site/us/en/about-us.html'],
+  name: 'adventures',
+  urls: ['https://wknd.site/us/en/adventures/climbing-new-zealand.html'],
   blocks: [
-    { name: 'cards-contributor', instances: [".text.cmp-text--font-small + .experiencefragment"] },
+    { name: 'hero-carousel', instances: [".carousel.cmp-carousel--mini"] },
+    { name: 'columns-details', instances: [".contentfragment.cmp-contentfragment--elements"] },
+    { name: 'tabs-content', instances: [".tabs.panelcontainer .cmp-tabs"] },
   ],
 };
 

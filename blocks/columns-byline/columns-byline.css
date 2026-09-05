@@ -1,0 +1,71 @@
+/* Block: columns-byline — WKND author byline card.
+   Horizontal author card (round avatar + name/role + social links) preceded by
+   a thin top rule. Stacks on small screens, horizontal from tablet up. */
+
+.columns-byline {
+  border-top: 1px solid #dadada;
+  padding-top: 24px;
+  margin-top: 24px;
+}
+
+.columns-byline > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+/* Round avatar thumbnail */
+.columns-byline > div > .columns-byline-img-col {
+  flex: 0 0 auto;
+  order: 0;
+}
+
+.columns-byline > div > .columns-byline-img-col img {
+  display: block;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Name + occupations */
+.columns-byline > div > div {
+  order: 1;
+}
+
+.columns-byline h2 {
+  margin: 0;
+  font-size: var(--heading-font-size-s, 22px);
+}
+
+.columns-byline p {
+  margin: 0;
+  color: #6d6d6d;
+}
+
+/* Social links row */
+.columns-byline .columns-byline-links {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.columns-byline .columns-byline-links a {
+  text-decoration: none;
+}
+
+@media (width >= 900px) {
+  .columns-byline > div {
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    gap: 16px;
+  }
+
+  /* Push the social links to the far right */
+  .columns-byline > div > .columns-byline-links {
+    margin-left: auto;
+  }
+}

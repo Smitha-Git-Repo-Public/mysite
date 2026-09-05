@@ -1,0 +1,41 @@
+{
+  "variantName": "columns-byline",
+  "baseBlock": "columns",
+  "version": "1.0.0",
+  "created": "2026-09-05T18:05:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://wknd.site/us/en/magazine/arctic-surfing.html",
+    "originPage": "WKND magazine article page",
+    "blockPosition": "bottom"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "author-byline",
+    "imagePattern": "icon"
+  },
+  "contentPattern": {
+    "structure": "round avatar + author name + occupations + social links, preceded by a top rule",
+    "buttonCount": 3,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "author/contributor byline cards at the end of an article",
+      "compact horizontal person cards with a round avatar and social links",
+      "attribution rows pairing a small photo with name, role and links"
+    ],
+    "notSuitableFor": [
+      "large two-column text-and-media feature layouts (use columns-media)",
+      "featured-article promotional callouts (use columns-featured)",
+      "contact key/value lists (use columns-contact)"
+    ]
+  },
+  "usage": {
+    "pagesUsing": [
+      "/us/en/magazine/arctic-surfing"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-09-05T18:05:00.000Z"
+  }
+}

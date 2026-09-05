@@ -1,260 +1,166 @@
 {
-  "metadata": {
-    "projectType": "da"
-  },
   "templates": [
     {
-      "name": "content-landing",
+      "name": "about-us",
       "urls": [
-        "https://wknd-trendsetters.site/",
-        "https://wknd-trendsetters.site/fashion-trends-of-the-season",
-        "https://wknd-trendsetters.site/fashion-trends-young-adults"
+        "https://wknd.site/us/en/about-us.html",
+        "https://wknd.site/us/en/magazine.html"
       ],
-      "coverageGaps": [],
-      "description": "Homepage / content landing: intro columns, article header, photo gallery, testimonial tabs, latest-articles cards, FAQ accordion, closing overlay hero.",
+      "representativeUrl": "https://wknd.site/us/en/about-us.html",
+      "description": "To be named in naming step",
       "blocks": [
         {
-          "name": "section-0",
+          "name": "cards-contributor",
           "instances": [
-            "#main-content > header.section.secondary-section"
-          ],
-          "section": "secondary"
-        },
+            ".text.cmp-text--font-small + .experiencefragment"
+          ]
+        }
+      ],
+      "urlPattern": "/us/en/*"
+    },
+    {
+      "name": "adventures",
+      "urls": [
+        "https://wknd.site/us/en/adventures/climbing-new-zealand.html"
+      ],
+      "representativeUrl": "https://wknd.site/us/en/adventures/climbing-new-zealand.html",
+      "description": "To be named in naming step",
+      "blocks": [
         {
-          "name": "section-2",
+          "name": "hero-carousel",
           "instances": [
-            "#main-content > section.section.secondary-section:nth-of-type(2)"
-          ],
-          "section": "secondary"
-        },
-        {
-          "name": "section-4",
-          "instances": [
-            "#main-content > section.section.secondary-section:nth-of-type(4)"
-          ],
-          "section": "secondary"
-        },
-        {
-          "name": "columns-media",
-          "instances": [
-            "#main-content > header.section.secondary-section > div.container > div.grid-layout.tablet-1-column.grid-gap-xxl"
+            ".carousel.cmp-carousel--mini"
           ]
         },
         {
-          "name": "columns-media",
+          "name": "columns-details",
           "instances": [
-            "#main-content > section.section:nth-of-type(1) > div.container > div.grid-layout.tablet-1-column.grid-gap-lg"
+            ".contentfragment.cmp-contentfragment--elements"
           ]
         },
         {
-          "name": "cards-gallery",
+          "name": "tabs-content",
           "instances": [
-            "#main-content > section.section.secondary-section:nth-of-type(2) > div.container > div.grid-layout.desktop-4-column.tablet-2-column-1.mobile-portrait-1-column.grid-gap-sm"
+            ".tabs.panelcontainer .cmp-tabs"
+          ]
+        }
+      ],
+      "urlPattern": "/us/en/adventures/*"
+    },
+    {
+      "name": "adventures-2",
+      "urls": [
+        "https://wknd.site/us/en/adventures.html"
+      ],
+      "representativeUrl": "https://wknd.site/us/en/adventures.html",
+      "description": "To be named in naming step",
+      "blocks": [
+        {
+          "name": "hero-feature",
+          "instances": [
+            ".teaser.cmp-teaser--hero"
           ]
         },
         {
-          "name": "tabs-profiles",
+          "name": "cards-adventures",
           "instances": [
-            "#main-content > section.section:nth-of-type(3) > div.container > div.tabs-wrapper"
+            ".cmp-tabs__tabpanel--active .image-list.list"
           ]
-        },
-        {
-          "name": "cards-article",
-          "instances": [
-            "#main-content > section.section.secondary-section:nth-of-type(4) > div.container > div.grid-layout.desktop-4-column.tablet-2-column-1.mobile-portrait-1-column.grid-gap-md"
-          ]
-        },
+        }
+      ],
+      "urlPattern": "/us/en/*"
+    },
+    {
+      "name": "faqs",
+      "urls": [
+        "https://wknd.site/us/en/faqs.html"
+      ],
+      "representativeUrl": "https://wknd.site/us/en/faqs.html",
+      "description": "To be named in naming step",
+      "blocks": [
         {
           "name": "accordion-faq",
           "instances": [
-            "#main-content > section.section:nth-of-type(5) div.faq-list"
-          ]
-        },
-        {
-          "name": "hero-overlay",
-          "instances": [
-            "#main-content > section.section.inverse-section > div.container > div.grid-layout.desktop-1-column"
+            ".cmp-accordion"
           ]
         }
-      ]
+      ],
+      "urlPattern": "/us/en/*"
     },
     {
-      "name": "content-listing",
+      "name": "home",
       "urls": [
-        "https://wknd-trendsetters.site/blog",
-        "https://wknd-trendsetters.site/case-studies",
-        "https://wknd-trendsetters.site/fashion-insights"
+        "https://wknd.site/us/en.html"
       ],
-      "coverageGaps": [],
-      "description": "Blog index/listing: hero intro columns, featured article columns, latest-articles card grid, closing accent CTA (default content).",
+      "representativeUrl": "https://wknd.site/us/en.html",
+      "description": "WKND homepage: hero carousel, featured-article columns, recent-articles card grid, standalone feature hero, next-adventures card grid.",
       "blocks": [
         {
-          "name": "section-0",
+          "name": "section-featured",
           "instances": [
-            "#main-content > header.secondary-section"
+            ".teaser.cmp-teaser--featured"
           ],
-          "section": "secondary"
+          "section": "featured"
         },
         {
-          "name": "section-2",
+          "name": "hero-carousel",
           "instances": [
-            "#main-content > section.secondary-section#articles"
-          ],
-          "section": "secondary"
-        },
-        {
-          "name": "section-3",
-          "instances": [
-            "#main-content > section.accent-section"
-          ],
-          "section": "accent"
-        },
-        {
-          "name": "columns-media",
-          "instances": [
-            "#main-content > header.secondary-section > div.container > div.grid-layout.tablet-1-column.grid-gap-xxl"
+            ".carousel.cmp-carousel--hero",
+            ".cmp-carousel--hero"
           ]
         },
         {
-          "name": "columns-media",
+          "name": "columns-featured",
           "instances": [
-            "#main-content > section.section:not(.secondary-section):not(.accent-section) > div.container > div.grid-layout.tablet-1-column.grid-gap-lg"
+            ".teaser.cmp-teaser--featured"
           ]
         },
         {
-          "name": "cards-article",
+          "name": "cards-adventures",
           "instances": [
-            "#main-content > section.secondary-section#articles > div.container > div.grid-layout.desktop-4-column.tablet-2-column-1.mobile-portrait-1-column.grid-gap-md"
+            ".image-list.list"
           ]
         },
         {
-          "name": "cards-gallery",
+          "name": "hero-feature",
           "instances": [
-            "#main-content > section.section:has(> div.container > div.grid-layout.desktop-3-column) > div.container > div.grid-layout.desktop-3-column"
+            ".teaser.cmp-teaser--hero.cmp-teaser--imagebottom"
           ]
         }
-      ]
+      ],
+      "urlPattern": "/us/*"
     },
     {
-      "name": "blog-article",
+      "name": "magazine",
       "urls": [
-        "https://wknd-trendsetters.site/blog/ace-pro-court-polo",
-        "https://wknd-trendsetters.site/blog/fashion-blog-post",
-        "https://wknd-trendsetters.site/blog/fashion-trends-young-culture",
-        "https://wknd-trendsetters.site/blog/fashion-trends-young-style",
-        "https://wknd-trendsetters.site/blog/flip-flop-summer-style",
-        "https://wknd-trendsetters.site/blog/latest-trends-young-casual-fashion",
-        "https://wknd-trendsetters.site/blog/street-style-trends"
+        "https://wknd.site/us/en/magazine/arctic-surfing.html"
       ],
-      "coverageGaps": [],
-      "description": "Blog article detail page: a two-column article header (cover image + title/byline via columns-media) followed by the article body as default content.",
+      "representativeUrl": "https://wknd.site/us/en/magazine/arctic-surfing.html",
+      "description": "To be named in naming step",
       "blocks": [
         {
-          "name": "columns-media",
+          "name": "breadcrumb",
           "instances": [
-            "#main-content > section.section:nth-of-type(1) > div.container > div.grid-layout.tablet-1-column.grid-gap-lg",
-            "#main-content > section.section:nth-of-type(1) > div.container > div.grid-layout"
+            ".cmp-breadcrumb"
+          ]
+        },
+        {
+          "name": "columns-byline",
+          "instances": [
+            ".cmp-byline"
+          ]
+        },
+        {
+          "name": "cards-upnext",
+          "instances": [
+            ".cmp-list"
           ]
         }
-      ]
-    },
-    {
-      "name": "faq-page",
-      "urls": [
-        "https://wknd-trendsetters.site/faq"
       ],
-      "coverageGaps": [],
-      "description": "FAQ page: hero intro columns, FAQ accordion, contact columns, closing accent CTA (default content).",
-      "blocks": [
-        {
-          "name": "section-0",
-          "instances": [
-            "#main-content > header.section.secondary-section"
-          ],
-          "section": "secondary"
-        },
-        {
-          "name": "section-2",
-          "instances": [
-            "#main-content > section.section.secondary-section"
-          ],
-          "section": "secondary"
-        },
-        {
-          "name": "section-3",
-          "instances": [
-            "#main-content > section.section.accent-section"
-          ],
-          "section": "accent"
-        },
-        {
-          "name": "columns-media",
-          "instances": [
-            "#main-content > header.section.secondary-section > div.container > div.grid-layout.tablet-1-column.grid-gap-xxl"
-          ]
-        },
-        {
-          "name": "accordion-faq",
-          "instances": [
-            "#main-content > section.section:nth-of-type(1) div.faq-list"
-          ]
-        },
-        {
-          "name": "columns-contact",
-          "instances": [
-            "#main-content > section.section.secondary-section > div.container > div.grid-layout.tablet-1-column.grid-gap-xxl"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "editorial-feature",
-      "urls": [
-        "https://wknd-trendsetters.site/fashion-trends-young-adults-casual-sport"
-      ],
-      "coverageGaps": [],
-      "description": "Editorial feature: hero intro columns, trend card grid, feature promo columns, closing accent CTA (default content).",
-      "blocks": [
-        {
-          "name": "section-0",
-          "instances": [
-            "#main-content > header.section.secondary-section"
-          ],
-          "section": "secondary"
-        },
-        {
-          "name": "section-2",
-          "instances": [
-            "#main-content > section.section.secondary-section"
-          ],
-          "section": "secondary"
-        },
-        {
-          "name": "section-3",
-          "instances": [
-            "#main-content > section.section.accent-section"
-          ],
-          "section": "accent"
-        },
-        {
-          "name": "columns-media",
-          "instances": [
-            "#main-content > header.section.secondary-section > div.container > div.grid-layout.tablet-1-column.grid-gap-xxl"
-          ]
-        },
-        {
-          "name": "cards-article",
-          "instances": [
-            "#main-content > section.section#trends > div.container > div.grid-layout.desktop-4-column.tablet-2-column-1.mobile-portrait-1-column.grid-gap-md"
-          ]
-        },
-        {
-          "name": "columns-media",
-          "instances": [
-            "#main-content > section.section.secondary-section > div.container > div.grid-layout.tablet-1-column.grid-gap-lg"
-          ]
-        }
-      ]
+      "urlPattern": "/us/en/magazine/*"
     }
-  ]
+  ],
+  "metadata": {
+    "projectType": "da"
+  }
 }

@@ -1,0 +1,43 @@
+/*
+ * columns-details — vertical stack of label/value spec items with a left accent rule.
+ * Matches the WKND adventure sidebar (Activity, Adventure Type, Trip Length,
+ * Group Size, Difficulty, Price).
+ */
+
+.columns-details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.columns-details .columns-details-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-left: 16px;
+  border-left: 2px solid #dadada;
+}
+
+.columns-details .columns-details-item > div {
+  margin: 0;
+}
+
+.columns-details .columns-details-label {
+  font-size: var(--body-font-size-xs);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #6d6d6d;
+}
+
+.columns-details .columns-details-label p {
+  margin: 0;
+}
+
+.columns-details .columns-details-value {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.columns-details .columns-details-value p {
+  margin: 0;
+}

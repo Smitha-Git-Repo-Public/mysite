@@ -1,19 +1,25 @@
 /* eslint-disable */
 /* global WebImporter */
-import cardsContributorParser from './parsers/cards-contributor.js';
+import breadcrumbParser from './parsers/breadcrumb.js';
+import columnsBylineParser from './parsers/columns-byline.js';
+import cardsUpnextParser from './parsers/cards-upnext.js';
 import cleanupTransformer from './transformers/wknd-cleanup.js';
-import sectionsTransformer from './transformers/wknd-about-us-sections.js';
+import sectionsTransformer from './transformers/wknd-magazine-sections.js';
 
 const parsers = {
-  'cards-contributor': cardsContributorParser,
+  'breadcrumb': breadcrumbParser,
+  'columns-byline': columnsBylineParser,
+  'cards-upnext': cardsUpnextParser,
 };
 const transformers = [cleanupTransformer, sectionsTransformer];
 
 const PAGE_TEMPLATE = {
-  name: 'about-us',
-  urls: ['https://wknd.site/us/en/about-us.html'],
+  name: 'magazine',
+  urls: ['https://wknd.site/us/en/magazine/arctic-surfing.html'],
   blocks: [
-    { name: 'cards-contributor', instances: [".text.cmp-text--font-small + .experiencefragment"] },
+    { name: 'breadcrumb', instances: [".cmp-breadcrumb"] },
+    { name: 'columns-byline', instances: [".cmp-byline"] },
+    { name: 'cards-upnext', instances: [".cmp-list"] },
   ],
 };
 

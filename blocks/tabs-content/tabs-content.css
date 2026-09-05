@@ -1,0 +1,66 @@
+/*
+ * tabs-content — WKND adventure detail content tabs (Overview / Itinerary / What to Bring).
+ * Simple text-label tabs: the active tab is a solid dark pill, inactive tabs are plain
+ * uppercase labels. Panels hold rich default content (headings, images, paragraphs, lists)
+ * with no surrounding border.
+ */
+
+.tabs-content .tabs-content-list {
+  display: flex;
+  gap: 8px;
+  max-width: 100%;
+  margin-bottom: 24px;
+  font-size: var(--body-font-size-xs);
+  overflow-x: auto;
+}
+
+@media (width >= 600px) {
+  .tabs-content .tabs-content-list {
+    font-size: var(--body-font-size-s);
+  }
+}
+
+.tabs-content .tabs-content-list button {
+  flex: 0 0 max-content;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  padding: 0.6em 1em;
+  background-color: transparent;
+  color: initial;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  line-height: unset;
+  text-align: initial;
+  text-transform: uppercase;
+  text-overflow: unset;
+  overflow: unset;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.tabs-content .tabs-content-list button p {
+  margin: 0;
+}
+
+.tabs-content .tabs-content-list button[aria-selected='true'] {
+  background-color: #000;
+  color: #fff;
+  cursor: initial;
+}
+
+.tabs-content .tabs-content-panel {
+  padding: 0;
+  overflow: auto;
+}
+
+.tabs-content .tabs-content-panel[aria-hidden='true'] {
+  display: none;
+}
+
+.tabs-content .tabs-content-panel img {
+  width: 100%;
+  height: auto;
+  display: block;
+}

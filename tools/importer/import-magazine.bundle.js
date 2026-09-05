@@ -35,47 +35,89 @@ var CustomImportScript = (() => {
   };
   var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
-  // tools/importer/import-about-us.js
-  var import_about_us_exports = {};
-  __export(import_about_us_exports, {
-    default: () => import_about_us_default
+  // tools/importer/import-magazine.js
+  var import_magazine_exports = {};
+  __export(import_magazine_exports, {
+    default: () => import_magazine_default
   });
 
-  // tools/importer/parsers/cards-contributor.js
-  function parse(element, { document }) {
-    const cells = [];
-    let cards = [];
-    if (element.classList.contains("experiencefragment")) {
-      cards.push(element);
-      let sibling = element.nextElementSibling;
-      while (sibling && sibling.classList.contains("experiencefragment")) {
-        cards.push(sibling);
-        sibling = sibling.nextElementSibling;
+  // tools/importer/parsers/breadcrumb.js
+  function parse(element, { document: document2 }) {
+    const items = Array.from(element.querySelectorAll(".cmp-breadcrumb__item"));
+    const trail = [];
+    items.forEach((item) => {
+      const link = item.querySelector(".cmp-breadcrumb__item-link, a");
+      if (link) {
+        const a = document2.createElement("a");
+        a.href = link.getAttribute("href");
+        a.textContent = link.textContent.trim();
+        trail.push(a);
+      } else {
+        const span = item.querySelector("span");
+        const text = (span ? span.textContent : item.textContent).trim();
+        if (text) {
+          const p = document2.createElement("p");
+          p.textContent = text;
+          trail.push(p);
+        }
       }
-    } else {
-      cards = Array.from(element.querySelectorAll(".experiencefragment.cmp-experience-fragment--contributor"));
-      if (!cards.length) {
-        cards = Array.from(element.querySelectorAll(".cmp-experiencefragment"));
-      }
+    });
+    if (!trail.length) {
+      element.replaceWith(...element.childNodes);
+      return;
     }
-    cards.forEach((card) => {
-      const image = card.querySelector(".image img, img");
-      const contentCell = [];
-      const name = card.querySelector(".cmp-title__text");
-      const titles = Array.from(card.querySelectorAll(".cmp-title__text"));
-      if (titles[0]) contentCell.push(titles[0]);
-      if (titles[1]) contentCell.push(titles[1]);
-      const socialLinks = Array.from(card.querySelectorAll('.cmp-button, a[class*="button"], .buildingblock a'));
-      socialLinks.forEach((a) => contentCell.push(a));
-      if (image || contentCell.length) {
-        cells.push([image || "", contentCell.length ? contentCell : ""]);
+    const cells = [[trail]];
+    const block = WebImporter.Blocks.createBlock(document2, { name: "breadcrumb", cells });
+    element.replaceWith(block);
+  }
+
+  // tools/importer/parsers/columns-byline.js
+  function parse2(element, { document: document2 }) {
+    const image = element.querySelector(".cmp-byline__image img, img");
+    const contentCell = [];
+    const name = element.querySelector(".cmp-byline__name");
+    const occupations = element.querySelector(".cmp-byline__occupations");
+    const links = Array.from(element.querySelectorAll(".cmp-byline__links a, a"));
+    if (name) contentCell.push(name);
+    if (occupations) contentCell.push(occupations);
+    links.forEach((a) => contentCell.push(a));
+    if (!image && !contentCell.length) {
+      element.replaceWith(...element.childNodes);
+      return;
+    }
+    const cells = [[image || "", contentCell.length ? contentCell : ""]];
+    const block = WebImporter.Blocks.createBlock(document2, { name: "columns-byline", cells });
+    element.replaceWith(block);
+  }
+
+  // tools/importer/parsers/cards-upnext.js
+  function parse3(element, { document: document2 }) {
+    const cells = [];
+    const items = Array.from(element.querySelectorAll(".cmp-list__item"));
+    items.forEach((item) => {
+      const link = item.querySelector(".cmp-list__item-link, a");
+      const titleEl = item.querySelector(".cmp-list__item-title");
+      const dateEl = item.querySelector(".cmp-list__item-date");
+      let titleCell = "";
+      const title = titleEl ? titleEl.textContent.trim() : link ? link.textContent.trim() : "";
+      if (link && title) {
+        const a = document2.createElement("a");
+        a.href = link.getAttribute("href");
+        a.textContent = title;
+        titleCell = a;
+      } else if (title) {
+        titleCell = title;
+      }
+      const date = dateEl ? dateEl.textContent.trim() : "";
+      if (titleCell || date) {
+        cells.push([titleCell, date]);
       }
     });
     if (!cells.length) {
       element.replaceWith(...element.childNodes);
       return;
     }
-    const block = WebImporter.Blocks.createBlock(document, { name: "cards-contributor", cells });
+    const block = WebImporter.Blocks.createBlock(document2, { name: "cards-upnext", cells });
     element.replaceWith(block);
   }
 
@@ -128,22 +170,43 @@ var CustomImportScript = (() => {
     }
   }
 
-  // tools/importer/transformers/wknd-about-us-sections.js
+  // tools/importer/transformers/wknd-magazine-sections.js
+  function resolveSections(element) {
+    return [
+      // 1. Article header + body — first section, no leading break.
+      { id: "s1", el: element.querySelector("#container-f922645ef8") },
+      // 2. columns-byline author card.
+      { id: "s2", el: element.querySelector("#experiencefragment-2c23382712 .cmp-byline") },
+      // 3. cards-upnext "Up Next" sidebar.
+      { id: "s3", el: element.querySelector("#container-ddf9bd49d5") }
+    ];
+  }
   function transform2(hookName, element, payload) {
     if (hookName === "beforeTransform") {
+      const sections = resolveSections(element);
+      for (let i = sections.length - 1; i >= 1; i -= 1) {
+        const section = sections[i];
+        if (!section.el) continue;
+        const hr = document.createElement("hr");
+        section.el.before(hr);
+      }
     }
   }
 
-  // tools/importer/import-about-us.js
+  // tools/importer/import-magazine.js
   var parsers = {
-    "cards-contributor": parse
+    "breadcrumb": parse,
+    "columns-byline": parse2,
+    "cards-upnext": parse3
   };
   var transformers = [transform, transform2];
   var PAGE_TEMPLATE = {
-    name: "about-us",
-    urls: ["https://wknd.site/us/en/about-us.html"],
+    name: "magazine",
+    urls: ["https://wknd.site/us/en/magazine/arctic-surfing.html"],
     blocks: [
-      { name: "cards-contributor", instances: [".text.cmp-text--font-small + .experiencefragment"] }
+      { name: "breadcrumb", instances: [".cmp-breadcrumb"] },
+      { name: "columns-byline", instances: [".cmp-byline"] },
+      { name: "cards-upnext", instances: [".cmp-list"] }
     ]
   };
   function executeTransformers(hookName, element, payload) {
@@ -156,11 +219,11 @@ var CustomImportScript = (() => {
       }
     });
   }
-  function findBlocksOnPage(document, template) {
+  function findBlocksOnPage(document2, template) {
     const pageBlocks = [];
     template.blocks.forEach((blockDef) => {
       blockDef.instances.forEach((selector) => {
-        document.querySelectorAll(selector).forEach((element) => {
+        document2.querySelectorAll(selector).forEach((element) => {
           if (pageBlocks.some((b) => b.element === element)) return;
           pageBlocks.push({ name: blockDef.name, selector, element });
         });
@@ -169,33 +232,33 @@ var CustomImportScript = (() => {
     console.log("Found " + pageBlocks.length + " block instances on page");
     return pageBlocks;
   }
-  var import_about_us_default = {
+  var import_magazine_default = {
     transform: (payload) => {
-      const { document, url, params } = payload;
-      const main = document.body;
+      const { document: document2, url, params } = payload;
+      const main = document2.body;
       executeTransformers("beforeTransform", main, payload);
-      const pageBlocks = findBlocksOnPage(document, PAGE_TEMPLATE);
+      const pageBlocks = findBlocksOnPage(document2, PAGE_TEMPLATE);
       pageBlocks.forEach((block) => {
         if (!block.element.parentNode) return;
         const parser = parsers[block.name];
         if (parser) {
           try {
-            parser(block.element, { document, url, params });
+            parser(block.element, { document: document2, url, params });
           } catch (e) {
             console.error("Failed to parse " + block.name + ":", e);
           }
         }
       });
       executeTransformers("afterTransform", main, payload);
-      const hr = document.createElement("hr");
+      const hr = document2.createElement("hr");
       main.appendChild(hr);
-      WebImporter.rules.createMetadata(main, document);
-      WebImporter.rules.transformBackgroundImages(main, document);
+      WebImporter.rules.createMetadata(main, document2);
+      WebImporter.rules.transformBackgroundImages(main, document2);
       WebImporter.rules.adjustImageUrls(main, url, params.originalURL);
       const rawPath = new URL(params.originalURL).pathname.replace(/\/$/, "").replace(/\.html?$/, "");
       const path = WebImporter.FileUtils.sanitizePath(rawPath === "" ? "/index" : rawPath);
-      return [{ element: main, path, report: { title: document.title, template: PAGE_TEMPLATE.name, blocks: pageBlocks.map((b) => b.name) } }];
+      return [{ element: main, path, report: { title: document2.title, template: PAGE_TEMPLATE.name, blocks: pageBlocks.map((b) => b.name) } }];
     }
   };
-  return __toCommonJS(import_about_us_exports);
+  return __toCommonJS(import_magazine_exports);
 })();

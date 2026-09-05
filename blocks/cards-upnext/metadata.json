@@ -1,0 +1,41 @@
+{
+  "variantName": "cards-upnext",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-09-05T18:05:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://wknd.site/us/en/magazine/arctic-surfing.html",
+    "originPage": "WKND magazine article page",
+    "blockPosition": "sidebar"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "related-list",
+    "imagePattern": "noimg"
+  },
+  "contentPattern": {
+    "structure": "linked uppercase article title + publication date per item, no images",
+    "buttonCount": 0,
+    "imageCount": 0
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "hand-curated 'up next' / 'related stories' lists in a sidebar",
+      "image-free linked title + date listings",
+      "compact vertical link lists with a secondary meta line"
+    ],
+    "notSuitableFor": [
+      "article teaser grids with cover images (use cards-article or cards-adventures)",
+      "dynamic index-driven article listings (use article-list)",
+      "image galleries (use cards-gallery)"
+    ]
+  },
+  "usage": {
+    "pagesUsing": [
+      "/us/en/magazine/arctic-surfing"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-09-05T18:05:00.000Z"
+  }
+}

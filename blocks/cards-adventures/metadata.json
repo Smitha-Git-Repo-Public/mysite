@@ -1,0 +1,42 @@
+{
+  "variantName": "cards-adventures",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-09-05T17:30:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://wknd.site/us/en.html",
+    "originPage": "WKND home page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "article",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "image + linked uppercase title + short description",
+    "buttonCount": 0,
+    "imageCount": 4
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "borderless article/adventure teaser grids (image, title, blurb)",
+      "'Recent Articles' and 'Where do you want to go?' style listings",
+      "linked content teasers in a 4-up grid"
+    ],
+    "notSuitableFor": [
+      "bordered/boxed card layouts",
+      "image-only galleries",
+      "cards with CTA buttons"
+    ]
+  },
+  "usage": {
+    "pagesUsing": [
+      "/us/en",
+      "/us/en/adventures"
+    ],
+    "reuseCount": 2,
+    "lastUsed": "2026-09-05T18:00:00.000Z"
+  }
+}

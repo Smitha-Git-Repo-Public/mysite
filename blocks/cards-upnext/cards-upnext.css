@@ -1,0 +1,44 @@
+/* Block: cards-upnext — WKND 'Up Next' related-articles list.
+   Image-free vertical list of linked article titles with publication dates.
+   Intended for a narrow sidebar column. */
+
+.cards-upnext > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.cards-upnext > ul > li {
+  border-top: 1px solid #dadada;
+  padding: 16px 0;
+}
+
+.cards-upnext > ul > li:last-child {
+  border-bottom: 1px solid #dadada;
+}
+
+.cards-upnext .cards-upnext-card-body {
+  margin: 0;
+}
+
+.cards-upnext .cards-upnext-card-body a {
+  display: block;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text-color, #202020);
+  letter-spacing: 0.02em;
+}
+
+.cards-upnext .cards-upnext-card-body a:hover {
+  color: var(--link-hover-color, #000);
+}
+
+/* Publication date: the non-link line(s) within the card body */
+.cards-upnext .cards-upnext-card-body p {
+  margin: 4px 0 0;
+  font-size: var(--body-font-size-xs, 14px);
+  color: #6d6d6d;
+}

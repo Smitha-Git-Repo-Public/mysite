@@ -1,0 +1,95 @@
+/* Block: columns-featured — WKND "Featured Article" two-column teaser.
+   Image column left, text column right (pretitle, heading, description, CTA).
+   Typically placed in a grey section (section-metadata Style: featured).
+   Image flush-left, text with generous padding. Stacks on mobile. */
+
+.columns-featured > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.columns-featured img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.columns-featured > div > div {
+  order: 1;
+  padding: 32px 24px;
+}
+
+.columns-featured > div > .columns-featured-img-col {
+  order: 0;
+  padding: 0;
+}
+
+.columns-featured h2,
+.columns-featured h3 {
+  margin: 0 0 24px;
+  font-family: var(--heading-font-family);
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: none;
+}
+
+.columns-featured p {
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  line-height: 1.6;
+}
+
+/* text column typography — eyebrow/pretitle (first paragraph of text column) */
+.columns-featured > div > div:not(.columns-featured-img-col) > p:first-child {
+  margin: 0 0 16px;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-s);
+  font-weight: 400;
+  color: var(--text-color);
+}
+
+/* CTA button */
+.columns-featured .button-container {
+  margin: 32px 0 0;
+}
+
+.columns-featured a.button:any-link {
+  border-radius: 0;
+  padding: 12px 24px;
+  background-color: var(--link-color);
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-s);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+}
+
+.columns-featured a.button:any-link:hover,
+.columns-featured a.button:any-link:focus-visible {
+  background-color: var(--link-hover-color, var(--dark-color));
+  color: var(--background-color);
+}
+
+@media (width >= 900px) {
+  .columns-featured > div {
+    flex-direction: unset;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .columns-featured > div > div {
+    flex: 1;
+    order: unset;
+    padding: 64px;
+    align-self: center;
+  }
+
+  .columns-featured > div > .columns-featured-img-col {
+    flex: 1;
+    padding: 0;
+  }
+}

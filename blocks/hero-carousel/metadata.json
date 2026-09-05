@@ -1,0 +1,42 @@
+{
+  "variantName": "hero-carousel",
+  "baseBlock": "hero",
+  "version": "1.0.0",
+  "created": "2026-09-05T17:30:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://wknd.site/us/en.html",
+    "originPage": "WKND home page",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "hero",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "background image + heading + description + 1 CTA per slide, with rotating slides",
+    "buttonCount": 1,
+    "imageCount": 3
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "top-of-page rotating hero banners with full-bleed imagery",
+      "multi-slide promotional heroes with an overlaid white content card",
+      "landing page intros with heading, blurb and a single CTA over a photo"
+    ],
+    "notSuitableFor": [
+      "text-only intros without a background image",
+      "two-column text-and-media feature layouts",
+      "repeating card grids"
+    ]
+  },
+  "usage": {
+    "pagesUsing": [
+      "/us/en",
+      "/us/en/adventures/climbing-new-zealand"
+    ],
+    "reuseCount": 2,
+    "lastUsed": "2026-09-05T18:00:00.000Z"
+  }
+}

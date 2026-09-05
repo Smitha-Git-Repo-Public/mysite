@@ -1,0 +1,41 @@
+{
+  "variantName": "columns-details",
+  "baseBlock": "columns",
+  "version": "1.0.0",
+  "created": "2026-09-05T18:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://wknd.site/us/en/adventures/climbing-new-zealand.html",
+    "originPage": "WKND adventure detail page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "spec-details",
+    "imagePattern": "noimg"
+  },
+  "contentPattern": {
+    "structure": "repeating label/value rows rendered as a vertical spec list with left accent rule",
+    "buttonCount": 0,
+    "imageCount": 0
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "adventure/product detail spec panels (Activity, Trip Length, Group Size, Difficulty, Price)",
+      "key/value fact sheets shown as a vertical label-over-value stack",
+      "at-a-glance sidebars pairing an uppercase label with a bold value"
+    ],
+    "notSuitableFor": [
+      "two-column text + media feature layouts (use columns-media)",
+      "contact lists with intro copy (use columns-contact)",
+      "repeating card grids or image galleries"
+    ]
+  },
+  "usage": {
+    "pagesUsing": [
+      "/us/en/adventures/climbing-new-zealand"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-09-05T18:00:00.000Z"
+  }
+}

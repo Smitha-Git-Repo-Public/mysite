@@ -1,0 +1,79 @@
+/* Block: cards-adventures — WKND borderless article/adventure teaser grid.
+   Image on top, uppercase title, muted description. 1 → 2 → 4 columns. */
+
+.cards-adventures > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+.cards-adventures > ul > li {
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  border: none;
+}
+
+.cards-adventures .cards-adventures-card-image {
+  line-height: 0;
+  margin-bottom: 16px;
+}
+
+.cards-adventures .cards-adventures-card-image a {
+  display: block;
+  line-height: 0;
+}
+
+.cards-adventures > ul > li img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.cards-adventures .cards-adventures-card-body {
+  margin: 0;
+}
+
+.cards-adventures .cards-adventures-card-body p {
+  margin: 0;
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-s);
+  line-height: 1.5;
+}
+
+.cards-adventures .cards-adventures-card-body h2,
+.cards-adventures .cards-adventures-card-body h3,
+.cards-adventures .cards-adventures-card-body p:first-child:has(a) {
+  margin: 0 0 8px;
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-s);
+  font-weight: 700;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.cards-adventures .cards-adventures-card-body a:any-link {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.cards-adventures .cards-adventures-card-body a:hover {
+  text-decoration: underline;
+}
+
+@media (width >= 600px) {
+  .cards-adventures > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  .cards-adventures > ul {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+}

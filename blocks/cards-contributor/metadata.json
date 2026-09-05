@@ -1,0 +1,40 @@
+{
+  "variantName": "cards-contributor",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-09-05T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://wknd.site/us/en/about-us.html",
+    "originPage": "WKND About Us page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "team",
+    "imagePattern": "icon"
+  },
+  "contentPattern": {
+    "structure": "circular avatar + name (heading) + role/title + row of social icon links",
+    "buttonCount": 0,
+    "imageCount": 4
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "team / contributor / people grids with circular avatars",
+      "profile cards showing name, role and social links",
+      "'Our Contributors' / 'Our Team' style centered card grids"
+    ],
+    "notSuitableFor": [
+      "article/blog teaser listings (use cards-adventures or cards-article)",
+      "image-only photo galleries (use cards-gallery)",
+      "tabbed profile switchers (use tabs-profiles)",
+      "JSON-sheet-driven employee tables (use employee-list)"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/us/en/about-us"],
+    "reuseCount": 1,
+    "lastUsed": "2026-09-05T00:00:00.000Z"
+  }
+}

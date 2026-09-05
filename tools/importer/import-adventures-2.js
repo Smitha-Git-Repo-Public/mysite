@@ -1,19 +1,22 @@
 /* eslint-disable */
 /* global WebImporter */
-import cardsContributorParser from './parsers/cards-contributor.js';
+import heroFeatureParser from './parsers/hero-feature.js';
+import cardsAdventuresParser from './parsers/cards-adventures.js';
 import cleanupTransformer from './transformers/wknd-cleanup.js';
-import sectionsTransformer from './transformers/wknd-about-us-sections.js';
+import sectionsTransformer from './transformers/wknd-adventures-2-sections.js';
 
 const parsers = {
-  'cards-contributor': cardsContributorParser,
+  'hero-feature': heroFeatureParser,
+  'cards-adventures': cardsAdventuresParser,
 };
 const transformers = [cleanupTransformer, sectionsTransformer];
 
 const PAGE_TEMPLATE = {
-  name: 'about-us',
-  urls: ['https://wknd.site/us/en/about-us.html'],
+  name: 'adventures-2',
+  urls: ['https://wknd.site/us/en/adventures.html'],
   blocks: [
-    { name: 'cards-contributor', instances: [".text.cmp-text--font-small + .experiencefragment"] },
+    { name: 'hero-feature', instances: [".teaser.cmp-teaser--hero"] },
+    { name: 'cards-adventures', instances: [".cmp-tabs__tabpanel--active .image-list.list"] },
   ],
 };
 
